@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <!-- ==========================
+    	Meta Tags
+    =========================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ==========================
+    	Title
+    =========================== -->
+    <title>BYLC Patshala</title>
+
+    <!-- ==========================
+    	Favicons
+    =========================== -->
+  <link rel="shortcut icon" href="{% static 'userwebsite/assets/icons/favicon.ico' %}">
+	<link rel="apple-touch-icon" href="{% static 'userwebsite/assets/icons/apple-touch-icon.png' %}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{% static 'userwebsite/assets/icons/apple-touch-icon-72x72.png' %}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{% static 'userwebsite/assets/icons/apple-touch-icon-114x114.png' %}">
+
+    <!-- ==========================
+    	Fonts
+    =========================== -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- ==========================
+    	CSS
+    =========================== -->
+    <link href="{% static 'userwebsite/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/animate.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/owl.carousel.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/creative-brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/color-switcher.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/custom.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/color/red.css' %}" id="main-color" rel="stylesheet" type="text/css">
+
+    <!-- ==========================
+    	JS
+    =========================== -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <h1>Supreme</h1>
+
+    <!-- ==========================
+    	SCROLL TOP - START
+    =========================== -->
+    <div id="scrolltop" class="hidden-xs"><i class="fa fa-chevron-up"></i></div>
+    <!-- ==========================
+    	SCROLL TOP - END
+    =========================== -->
+
+	<!-- ==========================
+    	HEADER - START
+    =========================== -->
+	<header class="navbar navbar-default navbar-static-top">
+    	<div class="container">
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand"><img src="{% static 'userwebsite/assets/images/logo.png' %}" class="img-responsive" alt=""></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="navbar-collapse collapse">
+            	<ul class="nav navbar-nav">
+                	<li class="active"><a href="{% url 'home_page' %}">Home</a></li>
+                  <li><a href="#">Courses</a></li>
+                  <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                </ul>
+                <div class="navbar-right hidden-xs">
+                	<form id="search-form" class="hidden-xs hidden-sm">
+                    	<fieldset>
+                            <div class="input-group">
+                            	<input type="text" class="form-control">
+                            	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block body_block %}
+
+
+
+    {% endblock  %}
+
+    <!-- ==========================
+    	FOOTER - START
+    =========================== -->
+    <footer class="navbar">
+    	<div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>© BYLCx 2018 - 2019 All right reserved. Designed by <a href="http://bylc.org" target="_blank">BYLC</a>.</p>
+                </div>
+                <div class="col-sm-4">
+                    <ul class="brands brands-sm brands-circle brands-inline">
+                    	<li><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ==========================
+    	FOOTER - END
+    =========================== -->
+
+   	<!-- ==========================
+    	JS
+    =========================== -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+    <script src="{% static 'userwebsite/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/jquery.mb.YTPlayer.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/typed.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/creative-brands.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/color-switcher.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/custom.js' %}"></script>
+    <script>
+    $(function () {
+		$("input,textarea").jqBootstrapValidation({
+        	preventSubmit: true,
+
+			submitSuccess: function($form, event) {
+				event.preventDefault(); // prevent default submit behaviour
+				// get values from FORM
+				var name = $("input#name").val();
+				var email = $("input#email").val();
+				var phone = $("input#phone").val();
+				var message = $("textarea#message").val();
+
+				$.ajax({
+					url: "send.php",
+					type: "POST",
+					data: {
+						name: name,
+						email: email,
+						phone: phone,
+						message: message
+					},
+					cache: false,
+					success: function() {
+						// Success message
+						$('.contact-alert-wrapper').html("<div class='alert alert-success alert-dismissible fade in'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><i class='fa fa-times'></i></button><p>Your message has been sent.</p></div>");
+						//clear all fields
+						$('#contactForm').trigger("reset");
+					},
+					error: function() {
+						// Fail message
+						$('.contact-alert-wrapper').html("<div class='alert alert-danger alert-dismissible fade in'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><i class='fa fa-times'></i></button><p>Sorry, it seems that email server is not responding. Please try again later!</p></div>");
+						//clear all fields
+						$('#contactForm').trigger("reset");
+					},
+				})
+			}
+		});
+	});
+    </script>
+</body>
+</html>
