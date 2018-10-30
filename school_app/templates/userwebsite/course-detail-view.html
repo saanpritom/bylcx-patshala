@@ -1,0 +1,90 @@
+{% extends "userwebsite/base-view.html" %}
+
+{% block body_block %}
+
+
+
+<!-- ==========================
+  JUMBOTRON - START
+=========================== -->
+<section class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-8">
+              <h2>{{ data_of_course.name }}</h2>
+                <h3>{{ data_of_course.description }}</h3>
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==========================
+  JUMBOTRON - END
+=========================== -->
+
+<!-- ==========================
+  SERVICES - START
+=========================== -->
+<section class="content-item" id="services">
+  <div class="container">
+      <div class="content-headline">
+          <h2>Lectures List</h2>
+            <h3>Tap and watch</h3>
+        </div>
+      <div class="row">
+          <div class="panel-group" id="faq-panel">
+
+            {% for lecture_name in data_of_course.lecture_data.all %}
+
+
+                <!-- FAQ 1 - START -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a type="button" class="video-btn" data-toggle="modal" data-src="{{ lecture_name.lecture_video_link }}" data-target="#{{ lecture_name.id }}">{{ lecture_name.name }}</button></h4>
+                    </div>
+                </div>
+                <!-- FAQ 1 - END -->
+
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="{{ lecture_name.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <!--iframe class="embed-responsive-item" src="{{ lecture_name.lecture_video_link }}" id="video"  allowscriptaccess="always">></iframe-->
+                          <iframe width="560" height="315" src="{{ lecture_name.lecture_video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+            {% endfor %}
+
+
+
+          </div>
+        </div>
+
+
+
+
+    </div>
+</section>
+<!-- ==========================
+  SERVICES - END
+=========================== -->
+
+
+
+
+{% endblock  %}

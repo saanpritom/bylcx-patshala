@@ -28,92 +28,50 @@
 <section class="content-item" id="services">
   <div class="container">
       <div class="content-headline">
-          <h2>Our Courses</h2>
-            <h3>Browse and enjoy our courses</h3>
+          <h2>Our Schools</h2>
+            <h3>Join any of our School</h3>
         </div>
       <div class="row">
           <div class="panel-group" id="faq-panel">
 
-              <!-- FAQ 1 - START -->
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title"><a class="" data-toggle="collapse" data-parent="#faq-panel" href="#faq-1">Questions #1</a></h4>
-                  </div>
-                  <div id="faq-1" class="panel-collapse collapse">
-                      <div class="panel-body">
+            {% for school_name in data_of_school %}
 
-                            <ul class="inner-courses">
-                              <li class="inner-courses-list"><h5><a href="course-detail.html">Course 1</a></h5></li>
-                              <li class="inner-courses-list"><h5><a href="#">Course 2</a></h5></li>
-                            </ul>
-                      </div>
-                  </div>
-              </div>
-              <!-- FAQ 1 - END -->
+                <!-- FAQ 1 - START -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a class="" data-toggle="collapse" data-parent="#faq-panel" href="#{{ school_name.id }}">{{ school_name.name }}</a></h4>
+                    </div>
+                    <div id="{{ school_name.id }}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <ul class="inner-courses">
 
-              <!-- FAQ 2 - START -->
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#faq-panel" href="#faq-2">Questions #2</a></h4>
-                  </div>
-                  <div id="faq-2" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <ul class="inner-courses">
-                          <li class="inner-courses-list"><h5><a href="#">Course 1</a></h5></li>
-                          <li class="inner-courses-list"><h5><a href="#">Course 2</a></h5></li>
-                        </ul>
-                      </div>
-                  </div>
-              </div>
-            <!-- FAQ 2 - END -->
+                            {% if school_name.course_data.exists %}
 
-              <!-- FAQ 3 - START -->
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#faq-panel" href="#faq-3">Questions #3</a></h4>
-                  </div>
-                  <div id="faq-3" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <ul class="inner-courses">
-                          <li class="inner-courses-list"><h5><a href="#">Course 1</a></h5></li>
-                          <li class="inner-courses-list"><h5><a href="#">Course 2</a></h5></li>
-                        </ul>
-                      </div>
-                  </div>
-              </div>
-            <!-- FAQ 3 - END -->
+                              {% for course_name in school_name.course_data.all %}
 
-              <!-- FAQ 4 - START -->
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#faq-panel" href="#faq-4">Questions #4</a></h4>
-                  </div>
-                  <div id="faq-4" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <ul class="inner-courses">
-                          <li class="inner-courses-list"><h5><a href="#">Course 1</a></h5></li>
-                          <li class="inner-courses-list"><h5><a href="#">Course 2</a></h5></li>
-                        </ul>
-                      </div>
-                  </div>
-              </div>
-            <!-- FAQ 4 - END -->
+                                  <li class="inner-courses-list"><h5><a href="{% url 'course_detail_page' course_name.id %}">{{ course_name.name }}</a></h5></li>
 
-              <!-- FAQ 5 - START -->
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#faq-panel" href="#faq-5">Questions #5</a></h4>
-                  </div>
-                  <div id="faq-5" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <ul class="inner-courses">
-                          <li class="inner-courses-list"><h5><a href="#">Course 1</a></h5></li>
-                          <li class="inner-courses-list"><h5><a href="#">Course 2</a></h5></li>
-                        </ul>
-                      </div>
-                  </div>
-              </div>
-            <!-- FAQ 5 - END -->
+                              {% endfor %}
+
+                            {% else %}
+
+                              <li class="inner-courses-list"><h5><a href="#">This school has no class</a></h5></li>
+
+                            {% endif %}
+
+
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ 1 - END -->
+
+
+
+
+            {% endfor %}
+
+
 
           </div>
         </div>
