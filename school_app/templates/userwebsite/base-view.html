@@ -71,9 +71,15 @@
             </div>
             <div class="navbar-collapse collapse">
             	<ul class="nav navbar-nav">
-                	<li class="active"><a href="{% url 'home_page' %}">Home</a></li>
-                  <li><a href="#">Courses</a></li>
-                  <li><a href="{% url 'contact_page' %}">Contact</a></li>
+
+                  {% url 'home_page' as url_check %}
+                	<li {% if request.path == url_check %} class="active"{% endif %}><a href="{% url 'home_page' %}">Home</a></li>
+
+                  {% url 'course_list_page' as url_check %}
+                  <li {% if request.path == url_check %} class="active"{% endif %}><a href="#">Courses</a></li>
+
+                  {% url 'contact_page' as url_check %}
+                  <li {% if request.path == url_check %} class="active"{% endif %}><a href="{% url 'contact_page' %}">Contact</a></li>
                 </ul>
                 <div class="navbar-right hidden-xs">
                 	<form id="search-form" class="hidden-xs hidden-sm">
