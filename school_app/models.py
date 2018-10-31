@@ -21,8 +21,6 @@ class CourseData(models.Model):
 class LectureData(models.Model):
     name = models.CharField(max_length=256)
     lecture_video_link = models.URLField(max_length=356, default='#')
-    previous_video_link = models.CharField(max_length=356, default='#')
-    next_video_link = models.CharField(max_length=356, default='#')
     description = models.TextField()
     enable_description = models.BooleanField(default=True)
     search_token = models.TextField()
