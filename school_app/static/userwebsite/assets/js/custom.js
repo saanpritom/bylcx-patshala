@@ -262,13 +262,3 @@ $(document).ready(function() {
 	}
 
 });
-
-
-//couse detail description button toggler
-function button_toggler(){
-	document.getElementById("button1").addEventListener("click", function(){
-		    document.getElementById("description1").style.display = "none";
-	});
-}
-
-document.onload = button_toggler;
