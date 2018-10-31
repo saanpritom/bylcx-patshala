@@ -67,8 +67,31 @@
 
                         </div>
 
+                        <div class="row">
+
+                          <div class="col-md-6 col-sm-6">
+                            <strong>Description:</strong>
+                          </div>
+
+                          <div class="col-md-6 col-sm-6">
+                            <div class="video-description-button">
+                              <div class="onoffswitch" id="button1">
+                                  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                                  <label class="onoffswitch-label" for="myonoffswitch">
+                                      <span class="onoffswitch-inner"></span>
+                                      <span class="onoffswitch-switch"></span>
+                                  </label>
+                              </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+
+
+
                         <div class="video-description">
-                            <p>{{ lecture_name.description }}</p>
+                            <p id="{{ lecture_name.id|lecture_description_id }}">{{ lecture_name.description }}</p>
                         </div>
 
                       </div>
