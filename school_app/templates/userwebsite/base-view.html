@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+<head>
+    <!-- ==========================
+    	Meta Tags
+    =========================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ==========================
+    	Title
+    =========================== -->
+    <title>BYLC Patshala</title>
+
+    <!-- ==========================
+    	Favicons
+    =========================== -->
+  <link rel="shortcut icon" href="{% static 'userwebsite/assets/icons/favicon.ico' %}">
+	<link rel="apple-touch-icon" href="{% static 'userwebsite/assets/icons/apple-touch-icon.png' %}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{% static 'userwebsite/assets/icons/apple-touch-icon-72x72.png' %}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{% static 'userwebsite/assets/icons/apple-touch-icon-114x114.png' %}">
+
+    <!-- ==========================
+    	Fonts
+    =========================== -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- ==========================
+    	CSS
+    =========================== -->
+    <link href="{% static 'userwebsite/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/creative-brands.css' %}" rel="stylesheet" type="text/css">
+
+    {% url 'course_detail_page' as url_check %}
+    {% if request.path == url_check %}
+          <link href="{% static 'userwebsite/assets/css/magnific-popup.css' %}" id="main-color" rel="stylesheet" type="text/css">
+    {% endif %}
+
+    <link href="{% static 'userwebsite/assets/css/custom.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/color/red.css' %}" id="main-color" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <h1>Supreme</h1>
+
+    <!-- ==========================
+    	SCROLL TOP - START
+    =========================== -->
+    <div id="scrolltop" class="hidden-xs"><i class="fa fa-chevron-up"></i></div>
+    <!-- ==========================
+    	SCROLL TOP - END
+    =========================== -->
+
+	<!-- ==========================
+    	HEADER - START
+    =========================== -->
+	<header class="navbar navbar-default navbar-static-top">
+    	<div class="container">
+            <div class="navbar-header">
+                <a href="{% url 'home_page' %}" class="navbar-brand"><img src="{% static 'userwebsite/assets/images/logo.png' %}" class="img-responsive" alt=""></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="navbar-collapse collapse">
+            	<ul class="nav navbar-nav">
+
+                  {% url 'home_page' as url_check %}
+                	<li {% if request.path == url_check %} class="active"{% endif %}><a href="{% url 'home_page' %}">Home</a></li>
+
+                  {% url 'contact_page' as url_check %}
+                  <li {% if request.path == url_check %} class="active"{% endif %}><a href="{% url 'contact_page' %}">Contact</a></li>
+                </ul>
+                <div class="navbar-right hidden-xs">
+                	<form id="search-form" class="hidden-xs hidden-sm" method="get" action="{% url 'search_page' %}">
+                    	<fieldset>
+                            <div class="input-group">
+                            	<input type="text" class="form-control" name="q" value="{{ request.GET.get }}">
+                            	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block body_block %}
+
+
+
+    {% endblock  %}
+
+    <!-- ==========================
+    	FOOTER - START
+    =========================== -->
+    <footer class="navbar">
+    	<div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>© BYLCx 2018 - 2019 All right reserved. Designed by <a href="http://bylc.org" target="_blank">BYLC</a>.</p>
+                </div>
+                <div class="col-sm-4">
+                    <ul class="brands brands-sm brands-circle brands-inline">
+                    	<li><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ==========================
+    	FOOTER - END
+    =========================== -->
+
+   	<!-- ==========================
+    	JS
+    =========================== -->
+	  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{% static 'userwebsite/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/creative-brands.js' %}"></script>
+
+    {% url 'course_detail_page' as url_check %}
+    {% if request.path == url_check %}
+          <script src="{% static 'userwebsite/assets/js/jquery.magnific-popup.min.js' %}"></script>
+    {% endif %}
+
+    <script src="{% static 'userwebsite/assets/js/custom.js' %}"></script>
+</body>
+</html>

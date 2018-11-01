@@ -1,0 +1,26 @@
+{% extends "userwebsite/base-view.html" %}
+
+
+{% block body_block %}
+
+<!-- ==========================
+  ERROR - START
+=========================== -->
+<section class="content-item grey" id="error">
+  <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+              <div class="error-box">
+                  <h2><i class="fa fa-exclamation-circle"></i> Page not found (404)</h2>
+                  <p>Something went wrong. We couldn't find this page. Go back to <a href="{% url 'home_page' %}">Homepage</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==========================
+  ERROR - END
+=========================== -->
+
+
+{% endblock  %}
