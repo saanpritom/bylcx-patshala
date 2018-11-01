@@ -25,9 +25,9 @@ STATIC_DIR = os.path.join(BASE_DIR, 'school_app/static')
 SECRET_KEY = 'i92!xf(fw+5e2apu5gw6m(ohl1t7rr_uy2p#n)mxhm%0)**ej1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://bylcx-patshala.herokuapp.com/',]
 
 
 # Application definition
