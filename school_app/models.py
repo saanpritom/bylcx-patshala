@@ -27,4 +27,4 @@ class LectureData(models.Model):
     course = models.ForeignKey(CourseData, related_name='lecture_data', on_delete=models.CASCADE,)
 
     def __str__(self):
-        return self.name
+        return str(self.id)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
+from django.db.models import Q
 from django.views.generic import View, TemplateView, ListView, DetailView
 from school_app.models import SchoolData, CourseData, LectureData
 
@@ -18,3 +19,11 @@ class CourseDetailView(DetailView):
 
 class ContactView(TemplateView):
     template_name = 'userwebsite/contact-view.html'
+
+
+def search(request):
+    template_name = 'userwebsite/search-result-list-view.html'
+    query = request.GET.get('q')
+    results = LectureData.objects.filter(Q(name__icontains=query))
+    context = {'search_items': results, 'keyword': query}
+    return render(request, template_name, context)

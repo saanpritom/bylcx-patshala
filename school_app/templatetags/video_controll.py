@@ -1,4 +1,5 @@
 from django import template
+from school_app.models import CourseData, LectureData, SchoolData
 
 register = template.Library()
 
@@ -14,6 +15,20 @@ def previousmodal(current_id_args):
     """Decrement one value"""
     current_id_args = current_id_args - 1
     return current_id_args
+
+
+@register.filter
+def nextelement(course_id, lecture_id):
+    lecture_id_list = list(LectureData.objects.filter(course=course_id))
+    return_lect = 1
+
+    for i in range(len(lecture_id_list)):
+        if i == lecture_id:
+            return_lect = lecture_id_list[i]
+            break
+
+    return return_lect
+    ##return lecture_id_list
 
 
 @register.filter

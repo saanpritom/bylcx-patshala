@@ -41,7 +41,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ lecture_name.id }}">
+                      <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ forloop.counter }}">
                         Lecture {{ forloop.counter }} - {{ lecture_name.name }}
                       </a>
                     </h4>
@@ -51,7 +51,7 @@
 
 
                 <!-- Modal -->
-                <div class="modal fade" id="{{ lecture_name.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -67,7 +67,7 @@
 
                         </div>
 
-                        {% if lecture_name.description == True %}
+                        {% if lecture_name.enable_description == True %}
                         <div class="video-description">
                             <p id="{{ lecture_name.id|lecture_description_id }}">{{ lecture_name.description }}</p>
                         </div>
@@ -83,13 +83,13 @@
 
                         {% if forloop.counter != 1 %}
 
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ lecture_name.id|previousmodal }}" data-dismiss="modal">Previous Video</button>
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ forloop.counter|previousmodal }}" data-dismiss="modal">Previous Video</button>
 
                         {% endif %}
 
                         {% if forloop.counter != data_of_course.lecture_data.all.count %}
 
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ lecture_name.id|nextmodal }}" data-dismiss="modal">Next Video</button>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ forloop.counter|nextmodal }}" data-dismiss="modal">Next Video</button>
 
                         {% endif %}
 
