@@ -30,7 +30,6 @@
   <div class="container">
     <div class="content-headline">
         <h2>Total {{ search_items.count }} results found</h2>
-          <h3>{{ search_items.model_name }} found 31</h3>
       </div>
       <div class="row">
           <div class="panel-group" id="faq-panel">
@@ -49,7 +48,6 @@
                         </a>
                         <p>Course Name - <a href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
                         <p>School Name - {{ search_obj.course.school.name }}</p>
-                        <p>Next element - {{ search_obj.course.id|nextelement:search_obj.id }}</p>
                       </h4>
                     </div>
                   </div>
@@ -78,26 +76,12 @@
                           </div>
                           {% endif %}
 
-
                         </div>
                         <div class="modal-footer">
 
-                          {% comment %}
-                            check and disable the previous button for the first element and the next button for the last element
-                          {% endcomment %}
-
-                          {% if forloop.counter != 1 %}
-
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ forloop.counter|previousmodal }}" data-dismiss="modal">Previous Video</button>
-
-                          {% endif %}
-
-                          {% if forloop.counter != search_items.count %}
-
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ forloop.counter|nextmodal }}" data-dismiss="modal">Next Video</button>
-
-                          {% endif %}
-
+                          <div class="course-name">
+                            This video is part of a course on <a type="button" class="btn btn-danger" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
+                          </div>
 
 
                         </div>
@@ -121,7 +105,7 @@
 
             {% endif %}
 
-
+{{ search_obj.course.name }}
 
           </div>
         </div>
