@@ -27,3 +27,11 @@ def search(request):
     results = LectureData.objects.filter(Q(name__icontains=query))
     context = {'search_items': results, 'keyword': query}
     return render(request, template_name, context)
+
+
+def handler404(request):
+    return render(request, 'userwebsite/404.html', status=404)
+
+
+def handler500(request):
+    return render(request, 'userwebsite/500.html', status=500)

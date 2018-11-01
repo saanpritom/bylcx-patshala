@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from school_app import urls
+from school_app import urls, views
+from django.conf.urls import handler404, handler500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('school_app.urls'), name='school_app'),
 ]
+
+handler404 = views.handler404
+handler500 = views.handler500
