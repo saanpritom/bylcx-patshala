@@ -29,8 +29,12 @@
 <section class="content-item" id="services">
   <div class="container">
     <div class="content-headline">
-        <h2>Total {{ search_items.count }} results found</h2>
+        <h2>Total {{ search_items.count|customadd:course_search_items.count }} results found</h2>
+          <h3>Lecture Found: <strong>{{ search_items.count }}</strong> and Course Found: <strong>{{ course_search_items.count }}</strong> </h3>
       </div>
+
+      {% if search_items.count > 0 or course_search_items.count > 0 %}
+
       <div class="row">
           <div class="panel-group" id="faq-panel">
 
@@ -48,6 +52,7 @@
                         </a>
                         <p>Course Name - <a href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
                         <p>School Name - {{ search_obj.course.school.name }}</p>
+                        <p>Category - Lecture</p>
                       </h4>
                     </div>
                   </div>
@@ -97,7 +102,7 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a type="button" class="video-btn" data-toggle="modal" data-target="#">
-                        Sorry, no results found
+                        Sorry, no lecture found
                       </a>
                     </h4>
                   </div>
@@ -109,6 +114,51 @@
 
           </div>
         </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="panel-group" id="faq-panel">
+
+              {% if course_search_items.count > 0 %}
+
+
+                  {% for search_obj in course_search_items %}
+
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a type="button" class="video-btn" href="{% url 'course_detail_page' search_obj.id %}">
+                            Course {{ forloop.counter }} - {{ search_obj.name }}
+                          </a>
+                          <p>School Name - {{ search_obj.school.name }}</p>
+                          <p>Category - Course</p>
+                        </h4>
+                      </div>
+                    </div>
+
+
+                  {% endfor %}
+
+                  {% else %}
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a type="button" class="video-btn" data-toggle="modal" data-target="#">
+                          Sorry, no course found
+                        </a>
+                      </h4>
+                    </div>
+                  </div>
+
+              {% endif %}
+
+            </div>
+          </div>
+
+          {% endif %}
+
     </div>
 </section>
 <!-- ==========================

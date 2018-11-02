@@ -24,8 +24,9 @@ class ContactView(TemplateView):
 def search(request):
     template_name = 'userwebsite/search-result-list-view.html'
     query = request.GET.get('q')
-    results = LectureData.objects.filter(Q(name__icontains=query))
-    context = {'search_items': results, 'keyword': query}
+    lecture_results = LectureData.objects.filter(Q(name__icontains=query) | Q(search_token__icontains=query))
+    course_results = CourseData.objects.filter(Q(name__icontains=query) |  Q(search_token__icontains=query))
+    context = {'search_items': lecture_results, 'course_search_items': course_results, 'keyword': query}
     return render(request, template_name, context)
 
 

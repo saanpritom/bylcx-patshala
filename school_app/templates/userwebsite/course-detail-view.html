@@ -36,6 +36,9 @@
       <div class="row">
           <div class="panel-group" id="faq-panel">
 
+            {% if data_of_course.lecture_data.count > 0 %}
+
+
             {% for lecture_name in data_of_course.lecture_data.all %}
 
                 <div class="panel panel-default">
@@ -103,6 +106,22 @@
 
 
             {% endfor %}
+
+            {% else %}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a type="button" class="video-btn">
+                    Sorry, this course has no lecture
+                  </a>
+                </h4>
+              </div>
+            </div>
+
+            {% endif %}
+
+
+
 
 
           </div>
