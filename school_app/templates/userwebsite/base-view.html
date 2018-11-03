@@ -25,17 +25,17 @@
     <!-- ==========================
     	Fonts
     =========================== -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css' media="none" onload="if(media!='all')media='all'">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' media="none" onload="if(media!='all')media='all'">
 
     <!-- ==========================
     	CSS
     =========================== -->
-    <link href="{% static 'userwebsite/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'userwebsite/assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'userwebsite/assets/css/creative-brands.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'userwebsite/assets/css/custom.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'userwebsite/assets/css/color/red.css' %}" id="main-color" rel="stylesheet" type="text/css">
+    <link href="{% static 'userwebsite/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'">
+    <link href="{% static 'userwebsite/assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'">
+    <link href="{% static 'userwebsite/assets/css/creative-brands.css' %}" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'">
+    <link href="{% static 'userwebsite/assets/css/custom.css' %}" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'">
+    <link href="{% static 'userwebsite/assets/css/color/red.css' %}" id="main-color" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'">
 
 </head>
 <body>
@@ -56,8 +56,10 @@
     	<div class="container">
             <div class="navbar-header">
                 <a href="{% url 'home_page' %}" class="navbar-brand"><img src="{% static 'userwebsite/assets/images/logo.png' %}" class="img-responsive" alt=""></a>
+                <button class="btn btn-default navbar-toggle" type="button" id="mobile-search-button"><i class="fa fa-search"></i></button>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
             </div>
+
             <div class="navbar-collapse collapse">
             	<ul class="nav navbar-nav">
 
@@ -77,9 +79,25 @@
                         </fieldset>
                     </form>
                 </div>
+
             </div>
         </div>
     </header>
+
+    <section class="mobile-search-field" id="mobile-search-field">
+      <div class="container">
+
+        <form id="search-form" method="get" action="{% url 'search_page' %}">
+            <fieldset>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="q" value="{{ request.GET.get }}">
+                    <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+                  </div>
+              </fieldset>
+          </form>
+
+      </div>
+    </section>
 
     {% block body_block %}
 
@@ -114,6 +132,28 @@
     	JS
     =========================== -->
 	  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="{% static 'userwebsite/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'userwebsite/assets/js/bootstrap.min.js' %}" async></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      $("#mobile-search-button").click(function(){
+
+
+          if($("#mobile-search-field").css('display') == 'block'){
+
+             $("#mobile-search-field").hide(500);
+
+          }else{
+
+             $("#mobile-search-field").show(500);
+
+          }
+
+      });
+
+    });
+
+    </script>
 </body>
 </html>
