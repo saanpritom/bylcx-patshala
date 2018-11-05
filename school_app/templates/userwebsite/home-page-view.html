@@ -27,19 +27,27 @@
 =========================== -->
 <section class="content-item" id="services">
   <div class="container">
-      <div class="content-headline">
-          <h2>Our Schools</h2>
-            <h3>Join any of our School</h3>
-        </div>
+
       <div class="row">
+
+        <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+
           <div class="panel-group" id="faq-panel">
 
             {% for school_name in data_of_school %}
 
                 <!-- FAQ 1 - START -->
                 <div class="panel panel-default">
+                    <div class="color-bar" style="background-color:{{ school_name.card_color }}"></div>
                     <div class="panel-heading">
-                        <h4 class="panel-title"><a class="" data-toggle="collapse" data-parent="#faq-panel" href="#{{ school_name.id }}">{{ school_name.name }}</a></h4>
+                        <h4 class="panel-title">
+                          <a class="" data-toggle="collapse" data-parent="#faq-panel" href="#{{ school_name.id }}">
+                                  {{ school_name.name }}
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+
+                          </a>
+
+                        </h4>
                     </div>
                     <div id="{{ school_name.id }}" class="panel-collapse collapse">
                         <div class="panel-body">
@@ -74,6 +82,12 @@
 
 
           </div>
+
+
+
+        </div>
+
+
         </div>
     </div>
 </section>

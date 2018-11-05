@@ -510,9 +510,9 @@ header.navbar .megamenu .dropdown-menu li ul li a .label {
 ------------------------------*/
 
 .jumbotron {
-	background-color: #5a201f;
+	background: linear-gradient(to right,#ffae0c,#a951ed) repeat;
 	padding:20px 0px;
-	min-height:100px;
+	min-height:30px;
 	position:relative;
 }
 
@@ -535,15 +535,17 @@ header.navbar .megamenu .dropdown-menu li ul li a .label {
 
 .jumbotron h2 {
 	color:#FFFFFF;
-	font-size:36px;
-	margin-bottom:30px;
+	font-size:26px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .jumbotron h3 {
-	color:#888888;
+	color:#FFFFFF;
 	font-size:18px;
-	margin-bottom:30px;
 	line-height:27px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .jumbotron .btn {
@@ -699,14 +701,7 @@ div .box.tags ul li i {
 }
 
 #services .row div i {
-	border:10px solid #DDDDDD;
-	font-size:50px;
-	width:130px;
-	height:130px;
-	padding-top:30px;
-	border-radius:50%;
 	color:#999999;
-	transition:all 1s ease;
 }
 
 #services h4 {
@@ -2437,19 +2432,17 @@ ul.blog-tags li i {
 	}
 
 	.jumbotron {
-		padding:10px 0px;
 		text-align:center;
 	}
 
 	.jumbotron h2 {
 		font-size:30px;
-		margin-bottom:20px;
+    font-weight: bold;
 	}
 
 	.jumbotron h3 {
-		color:#888888;
+		color:#FFFFFF;
 		font-size:18px;
-		margin-bottom:30px;
 		line-height:27px;
 	}
 
@@ -3034,11 +3027,34 @@ ul.blog-tags li i {
 
 
 /*-----My custom css ---------*/
-.panel-default > .panel-heading{
-  background: linear-gradient(to right, #a25b5b, #692e4c) repeat;
-  background-color: #CB2027;
-  color: white;
+
+.panel{
+  border-radius: .375rem;
 }
+
+.panel-default{
+  border: none;
+}
+
+.color-bar{
+  height: 1rem;
+  width: 100%;
+}
+
+.panel-default > .panel-heading{
+  background-color: white;
+  color: black;
+  box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+}
+
+.panel-heading > h4 > a{
+  color: black;
+}
+
+.fa{
+  float: right;
+}
+
 
 .inner-courses{
   position: relative;
