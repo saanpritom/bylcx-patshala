@@ -3091,26 +3091,82 @@ ul.blog-tags li i {
 }
 
 
-/*custom video modal for lectures */
-.modal-dialog {
-      max-width: 800px;
-      margin: 30px auto;
-  }
+/*custom video modal for lectures*/
 
-.modal-body {
-  position:relative;
-  padding:0px;
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 }
 
-.close {
-  position:absolute;
-  right:-30px;
-  top:0;
-  z-index:999;
-  font-size:2rem;
-  font-weight: normal;
-  color:#fff;
-  opacity:1;
+.modal-dialog {
+  position: fixed;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.modal-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid #3c7dcf;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.modal-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100px;
+  padding: 10px;
+  background: linear-gradient(to right,#ffae0c,#a951ed) repeat;
+  border: 0;
+}
+
+.modal-title {
+  text-align: left !important;
+  font-weight: 500;
+  font-size: 1.5em !important;
+  color: #fff !important;
+  line-height: 30px !important ;
+}
+
+.modal-body {
+  position: absolute;
+  top: 150px;
+  bottom: 60px;
+  width: 100%;
+  font-weight: 300;
+  overflow: auto;
+}
+
+.modal-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  padding: 10px;
+  background: #f1f3f5;
+}
+
+.video-description > h5{
+  font-weight: 500;
+  font-size: 12px;
+  text-align: left;
+}
+
+.video-description > p{
+  text-align: left;
 }
 
 /* mobile search field */
