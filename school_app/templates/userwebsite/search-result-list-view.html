@@ -27,9 +27,10 @@
 =========================== -->
 <section class="content-item" id="services">
   <div class="container">
-    <div class="content-headline">
-        <h2 style="font-size: 30px;">Total {{ search_items.count|customadd:course_search_items.count }} results found</h2>
-      </div>
+
+    <div class="content-headline" style="background-color: #fff; margin: 0px 0 50px;">
+      <h2 style="font-size: 20px; text-align: center;">Total {{ search_items.count|customadd:course_search_items.count }} results found</h2>
+    </div>
 
       {% if search_items.count > 0 or course_search_items.count > 0 %}
 
@@ -63,10 +64,10 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter }} - {{ search_obj.name }}</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                          <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-times mod-fa" style="color: #fff; text-shadow: 1px 1px 1px #fff;" aria-hidden="true"></i>
                           </button>
+                          <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter }} - {{ search_obj.name }}</h5>
                         </div>
                         <div class="modal-body">
 
@@ -77,17 +78,18 @@
 
                           {% if search_obj.enable_description == True %}
                           <div class="video-description">
+                              <h5>Description:</h5>
                               <p id="{{ search_obj.id }}">{{ search_obj.description }}</p>
                           </div>
                           {% endif %}
 
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" style="padding: 0px;">
 
                           <div class="course-name">
-                            This video is part of a course on <a type="button" class="btn btn-danger" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
+                            This video is part of a course on
                           </div>
-
+                           <a type="button" class="btn" style="background-color: {{ search_obj.course.school.card_color }}; padding-bottom: 5px;" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
 
                         </div>
                       </div>
