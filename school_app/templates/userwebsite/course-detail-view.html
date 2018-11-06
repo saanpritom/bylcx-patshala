@@ -34,6 +34,7 @@
             <h3>Tap and watch</h3>
         </div>
       <div class="row">
+        <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
           <div class="panel-group" id="faq-panel">
 
             {% if data_of_course.lecture_data.count > 0 %}
@@ -41,11 +42,13 @@
 
             {% for lecture_name in data_of_course.lecture_data.all %}
 
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="margin-top: 5px;">
+                  <div class="color-bar" style="background-color:{{ data_of_course.school.card_color }}"></div>
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ forloop.counter }}">
-                        Lecture {{ forloop.counter }} - {{ lecture_name.name }}
+                      <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ forloop.counter }}" style="color: #6f6e6e;">
+                          {{ forloop.counter }} - {{ lecture_name.name }}
+                            <i class="fa fa-play mod-fa" aria-hidden="true"></i>
                       </a>
                     </h4>
                   </div>
@@ -125,6 +128,7 @@
 
 
           </div>
+        </div>
         </div>
 
     </div>

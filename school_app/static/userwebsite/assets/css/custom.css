@@ -3051,7 +3051,7 @@ ul.blog-tags li i {
   color: black;
 }
 
-.fa{
+.mod-fa{
   float: right;
 }
 
@@ -3068,17 +3068,26 @@ ul.blog-tags li i {
   border: 1px solid transparent;
   padding-right: 3px;
   padding-left: 3px;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  background-color: #cccccc;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #fff;
 }
 
 .inner-courses-list h5{
   font-weight: bold;
 }
 
+.inner-courses-list a{
+  color: #6f6e6e;
+}
+
 .inner-courses-list a:hover{
   color: black;
+}
+
+.school-course-list{
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 

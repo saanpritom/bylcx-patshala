@@ -10,8 +10,7 @@
   <div class="container">
       <div class="row">
           <div class="col-sm-8">
-              <h2>Search Results</h2>
-                <h3>Keyword is: <strong>{{ keyword }}</strong></h3>
+                <h3>Search keyword is: <strong>{{ keyword }}</strong></h3>
             </div>
             <div class="col-sm-4">
 
@@ -29,13 +28,13 @@
 <section class="content-item" id="services">
   <div class="container">
     <div class="content-headline">
-        <h2>Total {{ search_items.count|customadd:course_search_items.count }} results found</h2>
-          <h3>Lecture Found: <strong>{{ search_items.count }}</strong> and Course Found: <strong>{{ course_search_items.count }}</strong> </h3>
+        <h2 style="font-size: 30px;">Total {{ search_items.count|customadd:course_search_items.count }} results found</h2>
       </div>
 
       {% if search_items.count > 0 or course_search_items.count > 0 %}
 
       <div class="row">
+        <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
           <div class="panel-group" id="faq-panel">
 
             {% if search_items.count > 0 %}
@@ -44,15 +43,16 @@
                 {% for search_obj in search_items %}
 
 
-                  <div class="panel panel-default">
+                  <div class="panel panel-default" style="margin-top: 5px;">
+                    <div class="color-bar" style="background-color:{{ search_obj.course.school.card_color }}"></div>
                     <div class="panel-heading">
                       <h4 class="panel-title">
                         <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ search_obj.id }}">
-                          Lecture {{ forloop.counter }} - {{ search_obj.name }}
+                          {{ forloop.counter }} - {{ search_obj.name }}
+                          <i class="fa fa-play mod-fa" aria-hidden="true"></i>
                         </a>
-                        <p>Course Name - <a href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
-                        <p>School Name - {{ search_obj.course.school.name }}</p>
-                        <p>Category - Lecture</p>
+                        <p style="margin-bottom: 0px;">Course Name - <a style="color:{{ search_obj.course.school.card_color }}" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
+                        <p style="margin-bottom: 0px;">Category - Lecture</p>
                       </h4>
                     </div>
                   </div>
@@ -99,6 +99,7 @@
 
                 {% else %}
                 <div class="panel panel-default">
+                  <div class="color-bar" style="background-color:red;"></div>
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a type="button" class="video-btn" data-toggle="modal" data-target="#">
@@ -114,10 +115,12 @@
 
           </div>
         </div>
+        </div>
 
         <hr>
 
         <div class="row">
+          <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
             <div class="panel-group" id="faq-panel">
 
               {% if course_search_items.count > 0 %}
@@ -126,14 +129,16 @@
                   {% for search_obj in course_search_items %}
 
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="margin-top: 5px;">
+                      <div class="color-bar" style="background-color:{{ search_obj.school.card_color }}"></div>
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a type="button" class="video-btn" href="{% url 'course_detail_page' search_obj.id %}">
-                            Course {{ forloop.counter }} - {{ search_obj.name }}
+                            {{ forloop.counter }} - {{ search_obj.name }}
+                              <i class="fa fa-link mod-fa" aria-hidden="true"></i>
                           </a>
-                          <p>School Name - {{ search_obj.school.name }}</p>
-                          <p>Category - Course</p>
+                          <p style="margin-bottom: 0px;">School Name - {{ search_obj.school.name }}</p>
+                          <p style="margin-bottom: 0px;">Category - Course</p>
                         </h4>
                       </div>
                     </div>
@@ -143,6 +148,7 @@
 
                   {% else %}
                   <div class="panel panel-default">
+                    <div class="color-bar" style="background-color:red;"></div>
                     <div class="panel-heading">
                       <h4 class="panel-title">
                         <a type="button" class="video-btn" data-toggle="modal" data-target="#">
@@ -155,6 +161,7 @@
               {% endif %}
 
             </div>
+          </div>
           </div>
 
           {% else %}
