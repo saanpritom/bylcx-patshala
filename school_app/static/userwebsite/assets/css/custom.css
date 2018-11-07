@@ -697,7 +697,7 @@ div .box.tags ul li i {
 /* SERVICES */
 
 #services .row div {
-	text-align:center;
+	text-align:left;
 }
 
 #services .row div i {
@@ -3055,6 +3055,10 @@ ul.blog-tags li i {
   float: right;
 }
 
+.mod-fa-video{
+  float: left;
+}
+
 
 .inner-courses{
   position: relative;
@@ -3088,6 +3092,11 @@ ul.blog-tags li i {
 .school-course-list{
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.footer-content{
+  width: 65%;
+  margin: 0 auto;
 }
 
 
@@ -3177,3 +3186,62 @@ ul.blog-tags li i {
   margin-bottom: 10px;
   display: none;
 }
+
+
+/* custom youtube iframe and lazyload youtube */
+/* -- starts here --- */
+
+.youtube {
+			    background-color: #000;
+			    margin-bottom: 30px;
+			    position: relative;
+			    padding-top: 56.25%;
+			    overflow: hidden;
+			    cursor: pointer;
+			}
+			.youtube img {
+			    width: 100%;
+			    top: -16.84%;
+			    left: 0;
+			    opacity: 0.7;
+			}
+			.youtube .play-button {
+			    width: 90px;
+			    height: 60px;
+			    background-color: #333;
+			    box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+			    z-index: 1;
+			    opacity: 0.8;
+			    border-radius: 6px;
+			}
+			.youtube .play-button:before {
+			    content: "";
+			    border-style: solid;
+			    border-width: 15px 0 15px 26.0px;
+			    border-color: transparent transparent transparent #fff;
+			}
+			.youtube img,
+			.youtube .play-button {
+			    cursor: pointer;
+			}
+			.youtube img,
+			.youtube iframe,
+			.youtube .play-button,
+			.youtube .play-button:before {
+			    position: absolute;
+			}
+			.youtube .play-button,
+			.youtube .play-button:before {
+			    top: 50%;
+			    left: 50%;
+			    transform: translate3d( -50%, -50%, 0 );
+			}
+			.youtube iframe {
+			    height: 100%;
+			    width: 100%;
+			    top: 0;
+			    left: 0;
+			}
+
+
+/* -- end here -- */

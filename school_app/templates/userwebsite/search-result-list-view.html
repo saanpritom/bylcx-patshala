@@ -45,12 +45,11 @@
 
 
                   <div class="panel panel-default" style="margin-top: 5px;">
-                    <div class="color-bar" style="background-color:{{ search_obj.course.school.card_color }}"></div>
                     <div class="panel-heading">
                       <h4 class="panel-title">
                         <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ search_obj.id }}">
                           {{ forloop.counter }} - {{ search_obj.name }}
-                          <i class="fa fa-play mod-fa" aria-hidden="true"></i>
+                          <i class="fa fa-caret-square-o-right fa-lg mod-fa" aria-hidden="true"></i>
                         </a>
                         <p style="margin-bottom: 0px;">Course Name - <a style="color:{{ search_obj.course.school.card_color }}" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
                         <p style="margin-bottom: 0px;">Category - Lecture</p>
@@ -72,7 +71,9 @@
                         <div class="modal-body">
 
                           <div class="embed-responsive embed-responsive-16by9">
-                            <iframe width="560" height="315" src="{{ search_obj.lecture_video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <div class="youtube" id="iframe{{ forloop.counter }}" onclick="youtube_player('iframe{{ forloop.counter }}', '{{ search_obj.lecture_video_link }}')">
+                               <div class="play-button"></div>
+                            </div>
 
                           </div>
 
@@ -85,11 +86,12 @@
 
                         </div>
                         <div class="modal-footer" style="padding: 0px;">
-
-                          <div class="course-name">
-                            This video is part of a course on
-                          </div>
-                           <a type="button" class="btn" style="background-color: {{ search_obj.course.school.card_color }}; padding-bottom: 5px;" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
+                          <div class="footer-content">
+                            <div class="course-name">
+                              This video is part of a course on
+                            </div>
+                             <a type="button" class="btn" style="background-color: {{ search_obj.course.school.card_color }}; padding-bottom: 5px;" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
+                           </div>
 
                         </div>
                       </div>
@@ -132,7 +134,6 @@
 
 
                     <div class="panel panel-default" style="margin-top: 5px;">
-                      <div class="color-bar" style="background-color:{{ search_obj.school.card_color }}"></div>
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a type="button" class="video-btn" href="{% url 'course_detail_page' search_obj.id %}">
