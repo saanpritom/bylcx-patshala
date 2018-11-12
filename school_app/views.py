@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from django.db.models import Q
 from django.views.generic import View, TemplateView, ListView, DetailView
 from school_app.models import SchoolData, CourseData, LectureData
+from itertools import chain
 
 
 class HomePageView(ListView):
@@ -26,8 +27,14 @@ def search(request):
     query = request.GET.get('q')
     lecture_results = LectureData.objects.filter(Q(name__icontains=query) | Q(search_token__icontains=query))
     course_results = CourseData.objects.filter(Q(name__icontains=query) |  Q(search_token__icontains=query))
-    context = {'search_items': lecture_results, 'course_search_items': course_results, 'keyword': query}
-    return render(request, template_name, context)
+
+    try:
+        search_results = list(sorted(chain(lecture_results, course_results), key=lambda instance: instance.id))
+        context = {'search_items': search_results, 'keyword': query, 'value': '1'}
+        return render(request, template_name, context)
+    except IndexError as e:
+        context = {'value': '0'}
+        return render(request, template_name, context)
 
 
 def handler404(request):

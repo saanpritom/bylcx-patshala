@@ -25,114 +25,85 @@
 <!-- ==========================
   SERVICES - START value1,kwarg=value2
 =========================== -->
+
 <section class="content-item" id="services">
   <div class="container">
 
-    <div class="content-headline" style="background-color: #fff; margin: 0px 0 50px;">
-      <h2 style="font-size: 20px; text-align: center;">Total {{ search_items.count|customadd:course_search_items.count }} results found</h2>
-    </div>
+      {% if search_items|search_obj_len > 0 %}
 
-      {% if search_items.count > 0 or course_search_items.count > 0 %}
+      <div class="content-headline" style="background-color: #fff; margin: 0px 0 50px;">
+        <h2 style="font-size: 20px; text-align: center;">Total {{ search_items|search_obj_len }} results found</h2>
+      </div>
 
       <div class="row">
         <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
           <div class="panel-group" id="faq-panel">
 
-            {% if search_items.count > 0 %}
+            {% for search_obj in search_items  %}
 
 
-                {% for search_obj in search_items %}
+
+              {% if search_obj.model_name == 'LectureData' %}
 
 
-                  <div class="panel panel-default" style="margin-top: 5px;">
-                    <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ search_obj.id }}">
-                          {{ forloop.counter }} - {{ search_obj.name }}
-                          <i class="fa fa-caret-square-o-right fa-lg mod-fa" aria-hidden="true"></i>
-                        </a>
-                        <p style="margin-bottom: 0px;">Course Name - <a style="color:{{ search_obj.course.school.card_color }}" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
-                        <p style="margin-bottom: 0px;">Category - Lecture</p>
-                      </h4>
+              <div class="panel panel-default" style="margin-top: 5px;">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ search_obj.id }}">
+                      {{ forloop.counter }} - {{ search_obj.name }}
+                      <i class="fa fa-caret-square-o-right fa-lg mod-fa" aria-hidden="true"></i>
+                    </a>
+                    <p style="margin-bottom: 0px;">Course Name - <a style="color:{{ search_obj.course.school.card_color }}" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
+                    <p style="margin-bottom: 0px;">Category - Lecture</p>
+                  </h4>
+                </div>
+              </div>
+
+
+              <!-- Modal -->
+              <div class="modal fade" id="{{ search_obj.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times mod-fa" style="color: #fff; text-shadow: 1px 1px 1px #fff;" aria-hidden="true"></i>
+                      </button>
+                      <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter }} - {{ search_obj.name }}</h5>
                     </div>
-                  </div>
+                    <div class="modal-body">
 
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="{{ search_obj.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
-                            <i class="fa fa-times mod-fa" style="color: #fff; text-shadow: 1px 1px 1px #fff;" aria-hidden="true"></i>
-                          </button>
-                          <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter }} - {{ search_obj.name }}</h5>
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <div class="youtube" id="iframe{{ forloop.counter }}" onclick="youtube_player('iframe{{ forloop.counter }}', '{{ search_obj.lecture_video_link }}')">
+                           <div class="play-button"></div>
                         </div>
-                        <div class="modal-body">
 
-                          <div class="embed-responsive embed-responsive-16by9">
-                            <div class="youtube" id="iframe{{ forloop.counter }}" onclick="youtube_player('iframe{{ forloop.counter }}', '{{ search_obj.lecture_video_link }}')">
-                               <div class="play-button"></div>
-                            </div>
-
-                          </div>
-
-                          {% if search_obj.enable_description == True %}
-                          <div class="video-description">
-                              <h5>Description:</h5>
-                              <p id="{{ search_obj.id }}">{{ search_obj.description }}</p>
-                          </div>
-                          {% endif %}
-
-                        </div>
-                        <div class="modal-footer" style="padding: 0px;">
-                          <div class="footer-content">
-                            <div class="course-name">
-                              This video is part of a course on
-                            </div>
-                             <a type="button" class="btn" style="background-color: {{ search_obj.course.school.card_color }}; padding-bottom: 5px;" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
-                           </div>
-
-                        </div>
                       </div>
+
+                      {% if search_obj.enable_description == True %}
+                      <div class="video-description">
+                          <h5>Description:</h5>
+                          <p id="{{ search_obj.id }}">{{ search_obj.description }}</p>
+                      </div>
+                      {% endif %}
+
                     </div>
-                  </div>
+                    <div class="modal-footer" style="padding: 0px;">
+                      <div class="footer-content">
+                        <div class="course-name">
+                          This video is part of a course on
+                        </div>
+                         <a type="button" class="btn" style="background-color: {{ search_obj.course.school.card_color }}; padding-bottom: 5px;" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a>
+                       </div>
 
-
-                {% endfor %}
-
-                {% else %}
-                <div class="panel panel-default">
-                  <div class="color-bar" style="background-color:red;"></div>
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a type="button" class="video-btn" data-toggle="modal" data-target="#">
-                        Sorry, no lecture found
-                      </a>
-                    </h4>
+                    </div>
                   </div>
                 </div>
-
-            {% endif %}
-
-{{ search_obj.course.name }}
-
-          </div>
-        </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-          <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-            <div class="panel-group" id="faq-panel">
-
-              {% if course_search_items.count > 0 %}
+              </div>
 
 
-                  {% for search_obj in course_search_items %}
+              {% else %}
 
-
+                
                     <div class="panel panel-default" style="margin-top: 5px;">
                       <div class="panel-heading">
                         <h4 class="panel-title">
@@ -146,40 +117,28 @@
                       </div>
                     </div>
 
-
-                  {% endfor %}
-
-                  {% else %}
-                  <div class="panel panel-default">
-                    <div class="color-bar" style="background-color:red;"></div>
-                    <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a type="button" class="video-btn" data-toggle="modal" data-target="#">
-                          Sorry, no course found
-                        </a>
-                      </h4>
-                    </div>
-                  </div>
-
               {% endif %}
 
-            </div>
+            {% endfor %}
           </div>
-          </div>
+        </div>
+      </div>
 
-          {% else %}
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a type="button" class="video-btn">
-                  Sorry, nothing found
-                </a>
-              </h4>
-            </div>
-          </div>
+    {% else %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a type="button" class="video-btn">
+            Sorry, nothing found
+          </a>
+        </h4>
+      </div>
+    </div>
+
+    {% endif %}
 
 
-          {% endif %}
+
 
     </div>
 </section>
