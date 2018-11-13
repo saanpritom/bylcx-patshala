@@ -25,3 +25,8 @@ def customadd(value_one, value_two):
 @register.filter
 def search_obj_len(search_obj):
     return len(search_obj)
+
+
+@register.filter
+def serialize_pagination(loop_counter, pagination_number):
+    return (loop_counter+(pagination_number * 10))-10

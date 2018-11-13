@@ -50,7 +50,7 @@
                 <div class="panel-heading">
                   <h4 class="panel-title">
                     <a type="button" class="video-btn" data-toggle="modal" data-target="#{{ search_obj.id }}">
-                      {{ forloop.counter }} - {{ search_obj.name }}
+                      {{ forloop.counter|serialize_pagination:search_items.number }} - {{ search_obj.name }}
                       <i class="fa fa-caret-square-o-right fa-lg mod-fa" aria-hidden="true"></i>
                     </a>
                     <p style="margin-bottom: 0px;">Course Name - <a style="color:{{ search_obj.course.school.card_color }}" href="{% url 'course_detail_page' search_obj.course.id %}">{{ search_obj.course.name }}</a></p>
@@ -68,7 +68,7 @@
                       <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-times mod-fa" style="color: #fff; text-shadow: 1px 1px 1px #fff;" aria-hidden="true"></i>
                       </button>
-                      <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter }} - {{ search_obj.name }}</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter|serialize_pagination:search_items.number }} - {{ search_obj.name }}</h5>
                     </div>
                     <div class="modal-body">
 
@@ -108,7 +108,7 @@
                       <div class="panel-heading">
                         <h4 class="panel-title">
                           <a type="button" class="video-btn" href="{% url 'course_detail_page' search_obj.id %}">
-                            {{ forloop.counter }} - {{ search_obj.name }}
+                            {{ forloop.counter|serialize_pagination:search_items.number }} - {{ search_obj.name }}
                               <i class="fa fa-link mod-fa" aria-hidden="true"></i>
                           </a>
                           <p style="margin-bottom: 0px;">School Name - {{ search_obj.school.name }}</p>
