@@ -62,7 +62,7 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close" onclick="close_youtube('iframe{{ forloop.counter }}', '{{ lecture_name.lecture_video_link }}')">
                           <i class="fa fa-times mod-fa" style="color: #fff; text-shadow: 1px 1px 1px #fff;" aria-hidden="true"></i>
                         </button>
                         <p class="modal-title" id="myModalLabel">Lecture {{ forloop.counter }} <br> {{ lecture_name.name }}</p>

@@ -65,7 +65,7 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                      <button type="button" class="close btn" data-dismiss="modal" aria-label="Close" onclick="close_youtube('iframe{{ forloop.counter|serialize_pagination:search_items.number }}', '{{ search_obj.lecture_video_link }}')">
                         <i class="fa fa-times mod-fa" style="color: #fff; text-shadow: 1px 1px 1px #fff;" aria-hidden="true"></i>
                       </button>
                       <h5 class="modal-title" id="exampleModalLabel">Lecture {{ forloop.counter|serialize_pagination:search_items.number }} - {{ search_obj.name }}</h5>
@@ -73,7 +73,7 @@
                     <div class="modal-body">
 
                       <div class="embed-responsive embed-responsive-16by9">
-                        <div class="youtube" id="iframe{{ forloop.counter }}" onclick="youtube_player('iframe{{ forloop.counter }}', '{{ search_obj.lecture_video_link }}')">
+                        <div class="youtube" id="iframe{{ forloop.counter|serialize_pagination:search_items.number }}" onclick="youtube_player('iframe{{ forloop.counter|serialize_pagination:search_items.number }}', '{{ search_obj.lecture_video_link }}')">
                            <div class="play-button"></div>
                         </div>
 
