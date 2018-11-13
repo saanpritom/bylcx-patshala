@@ -32,7 +32,7 @@
       {% if search_items|search_obj_len > 0 %}
 
       <div class="content-headline" style="background-color: #fff; margin: 0px 0 50px;">
-        <h2 style="font-size: 20px; text-align: center;">Total {{ search_items|search_obj_len }} results found</h2>
+        <h2 style="font-size: 20px; text-align: center;">Total {{ total_results }} results found</h2>
       </div>
 
       <div class="row">
@@ -103,7 +103,7 @@
 
               {% else %}
 
-                
+
                     <div class="panel panel-default" style="margin-top: 5px;">
                       <div class="panel-heading">
                         <h4 class="panel-title">
@@ -137,7 +137,32 @@
 
     {% endif %}
 
+    <!--pagination-->
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+        <div class="pagination">
 
+          {% if search_items.has_previous %}
+            <a href="?q={{ keyword }}&page=1">&laquo;</a>
+            <a href="?q={{ keyword }}&page={{ search_items.previous_page_number }}">{{ search_items.previous_page_number }}</a>
+          {% endif %}
+
+          <a class="active" href="#">{{ search_items.number }}</a>
+
+          {% if search_items.has_next %}
+              <a href="?q={{ keyword }}&page={{ search_items.next_page_number }}">{{ search_items.next_page_number }}</a>
+              <a href="?q={{ keyword }}&page={{ search_items.paginator.num_pages }}">&raquo;</a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!--end pagination-->
 
 
     </div>

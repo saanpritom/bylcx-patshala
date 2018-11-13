@@ -3244,4 +3244,24 @@ ul.blog-tags li i {
 			}
 
 
+/* -- pagination -- */
+.pagination {
+    display: inline-block;
+    margin: auto;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #a951ed;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
 /* -- end here -- */
