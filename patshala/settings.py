@@ -123,3 +123,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+
+# Email backend using
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

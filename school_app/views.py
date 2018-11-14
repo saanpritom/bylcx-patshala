@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.db.models import Q
 from django.views.generic import View, TemplateView, ListView, DetailView
 from school_app.models import SchoolData, CourseData, LectureData
 from itertools import chain
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.mail import send_mail, BadHeaderError
+from .forms import ContactForm
 
 
 class HomePageView(ListView):
@@ -21,6 +23,25 @@ class CourseDetailView(DetailView):
 
 class ContactView(TemplateView):
     template_name = 'userwebsite/contact-view.html'
+
+    def get(self, request):
+        form = ContactForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            sender_name = form.cleaned_data['sender_name']
+            from_email = form.cleaned_data['from_email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['pritom@bylc.org'])
+                return render(request, self.template_name, {'form': form, 'success_message': '1'})
+            except BadHeaderError:
+                return render(request, self.template_name, {'form': form, 'success_message': '0'})
+
+        return render(request, self.template_name, {'form': form})
 
 
 def search(request):
