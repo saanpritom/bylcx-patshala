@@ -124,6 +124,28 @@
         </div>
       </div>
 
+      <!--pagination-->
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+          <div class="pagination">
+
+            {% if search_items.has_previous %}
+              <a href="?q={{ keyword }}&page=1">&laquo;</a>
+              <a href="?q={{ keyword }}&page={{ search_items.previous_page_number }}">{{ search_items.previous_page_number }}</a>
+            {% endif %}
+
+            <a class="active" href="#">{{ search_items.number }}</a>
+
+            {% if search_items.has_next %}
+                <a href="?q={{ keyword }}&page={{ search_items.next_page_number }}">{{ search_items.next_page_number }}</a>
+                <a href="?q={{ keyword }}&page={{ search_items.paginator.num_pages }}">&raquo;</a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      <!--end pagination-->
+
     {% else %}
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -137,32 +159,7 @@
 
     {% endif %}
 
-    <!--pagination-->
-    <div class="row">
-      <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-        <div class="pagination">
 
-          {% if search_items.has_previous %}
-            <a href="?q={{ keyword }}&page=1">&laquo;</a>
-            <a href="?q={{ keyword }}&page={{ search_items.previous_page_number }}">{{ search_items.previous_page_number }}</a>
-          {% endif %}
-
-          <a class="active" href="#">{{ search_items.number }}</a>
-
-          {% if search_items.has_next %}
-              <a href="?q={{ keyword }}&page={{ search_items.next_page_number }}">{{ search_items.next_page_number }}</a>
-              <a href="?q={{ keyword }}&page={{ search_items.paginator.num_pages }}">&raquo;</a>
-          {% endif %}
-
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-    <!--end pagination-->
 
 
     </div>
