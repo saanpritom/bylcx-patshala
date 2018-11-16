@@ -37,9 +37,9 @@ class ContactView(TemplateView):
             message = form.cleaned_data['message']
             try:
                 send_mail(subject, message, from_email, ['pritom@bylc.org'])
-                return render(request, self.template_name, {'form': form, 'success_message': '1'})
+                return render(request, self.template_name, {'form': form, 'success_message': 1})
             except BadHeaderError:
-                return render(request, self.template_name, {'form': form, 'success_message': '0'})
+                return render(request, self.template_name, {'form': form, 'success_message': 0})
 
         return render(request, self.template_name, {'form': form})
 
