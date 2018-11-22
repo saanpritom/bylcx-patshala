@@ -70,14 +70,17 @@
                   <li {% if request.path == url_check %} class="active"{% endif %}><a href="{% url 'contact_page' %}">Contact</a></li>
                 </ul>
                 <div class="navbar-right hidden-xs">
-                	<form id="search-form" class="hidden-xs hidden-sm" method="get" action="{% url 'search_page' %}">
-                    	<fieldset>
-                            <div class="input-group">
-                            	<input type="text" class="form-control" name="q" value="{{ request.GET.get }}">
-                            	<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
-                            </div>
-                        </fieldset>
-                    </form>
+
+                    <div class="flexsearch">
+                      <div class="flexsearch--wrapper">
+                        <form class="flexsearch--form" method="get" action="{% url 'search_page' %}">
+                          <div class="flexsearch--input-wrapper">
+                            <input class="flexsearch--input" type="search" placeholder="search" name="q" value="{{ request.GET.get }}">
+                          </div>
+                          <input class="flexsearch--submit" style="background-color: #CB2027; height: 40px; line-height: 0px; margin-top: 5px; color: #fff;" type="submit" value="&#10140;"/>
+                        </form>
+                      </div>
+                    </div>
                 </div>
 
             </div>
